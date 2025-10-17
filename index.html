@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EP Capital</title>
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.png">
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Montserrat --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Swiper.js for Carousel --><link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <style>
+        /* Define a fonte Montserrat como padrão para a página */
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Ajuste para o efeito de zoom do carrossel não cortar os cards */
+        .mySwiper {
+            overflow: visible;
+        }
+        /* Habilita a rolagem suave */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Efeito de iluminação para a imagem principal */
+        .hero-image {
+            transition: all 0.4s ease-in-out;
+        }
+        .hero-image:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+            box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.1);
+        }
+        /* Efeito para bandeiras de idioma */
+        .lang-btn img {
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+            opacity: 0.7;
+        }
+        .lang-btn.active img, .lang-btn:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- =========== SEÇÃO DO CABECALHO =========== --><header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                <!-- Logo --><a href="#" class="flex items-center space-x-3">
+                     <img src="img/logo.png" alt="Foto de Barbara Naves Barbiero">
+                </a>
+
+                <!-- Navegação para Desktop --><nav class="hidden lg:flex items-center space-x-6">
+                    <a href="#ep-capital-section" class="text-gray-500 hover:text-[#2E5196] text-xs font-bold uppercase tracking-wider" data-lang-key="nav_ep_capital">EP CAPITAL</a>
+                    <a href="#servicos-section" class="text-gray-500 hover:text-[#2E5196] text-xs font-bold uppercase tracking-wider" data-lang-key="nav_servicos">SERVIÇOS</a>
+                    <a href="#quem-somos-section" class="text-gray-500 hover:text-[#2E5196] text-xs font-bold uppercase tracking-wider" data-lang-key="nav_quem_somos">QUEM SOMOS</a>
+                    <a href="#contato-section" class="text-gray-500 hover:text-[#2E5196] text-xs font-bold uppercase tracking-wider" data-lang-key="nav_trabalhe_na_ep">TRABALHE NA EP</a>
+                    <a href="#contato-section" class="text-gray-500 hover:text-[#2E5196] text-xs font-bold uppercase tracking-wider" data-lang-key="nav_contato">CONTATO</a>
+                    <!-- Seletor de Idioma --><div class="flex items-center space-x-3 border-l-2 border-gray-200 ml-4 pl-6">
+                        <button id="lang-pt-btn-desktop" class="cursor-pointer lang-btn active"><img src="img/brasilflag.webp" alt="Bandeira Brasil" class="w-6 h-auto"></button>
+                        <button id="lang-en-btn-desktop" class="cursor-pointer lang-btn"><img src="img/euaflag.webp" alt="Bandeira EUA" class="w-6 h-auto"></button>
+                        <button id="lang-es-btn-desktop" class="cursor-pointer lang-btn"><img src="img/espanhaflag.png" alt="Bandeira Espanha" class="w-6 h-auto"></button>
+                    </div>
+                </nav>
+
+                <!-- Botão do Menu Mobile --><div class="lg:hidden">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-800 focus:outline-none">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile (oculto por padrão) --><div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-gray-200">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                 <a href="#ep-capital-section" class="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded text-sm font-medium" data-lang-key="nav_ep_capital_mobile">EP CAPITAL</a>
+                 <a href="#servicos-section" class="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded text-sm font-medium" data-lang-key="nav_servicos_mobile">SERVIÇOS</a>
+                 <a href="#quem-somos-section" class="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded text-sm font-medium" data-lang-key="nav_quem_somos_mobile">QUEM SOMOS</a>
+                 <a href="#contato-section" class="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded text-sm font-medium" data-lang-key="nav_trabalhe_na_ep_mobile">TRABALHE NA EP</a>
+                 <a href="#contato-section" class="block px-3 py-2 text-gray-600 hover:bg-gray-100 rounded text-sm font-medium" data-lang-key="nav_contato_mobile">CONTATO</a>
+                 <!-- Seletor de Idioma Mobile --><div class="border-t border-gray-200 pt-4 mt-2">
+                    <div class="flex items-center space-x-4 px-3">
+                        <span class="text-sm font-medium text-gray-600" data-lang-key="nav_idioma_mobile">Idioma:</span>
+                        <button id="lang-pt-btn-mobile" class="cursor-pointer lang-btn active"><img src="img/brasilflag.webp" alt="Bandeira Brasil" class="w-6 h-auto"></button>
+                        <button id="lang-en-btn-mobile" class="cursor-pointer lang-btn"><img src="img/euaflag.webp" alt="Bandeira EUA" class="w-6 h-auto"></button>
+                        <button id="lang-es-btn-mobile" class="cursor-pointer lang-btn"><img src="img/espanhaflag.png" alt="Bandeira Espanha" class="w-6 h-auto"></button>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========== SEÇÃO DE DUAS COLUNAS =========== --><main>
+        <section id="ep-capital-section" class="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-96px)] overflow-hidden">
+            <!-- Coluna Esquerda (Azul) --><div class="bg-[#2E5196] text-white flex items-center justify-center p-8 sm:p-16 lg:p-24 order-2 lg:order-1">
+                <div class="max-w-md w-full">
+                    <h1 class="text-2xl md:text-2xl font-semibold mb-8 leading-snug" data-lang-key="hero_title">
+                        A EP Capital é uma empresa de assessoria financeira independente especializada em Fusões e Aquisições (M&A), fundada em 2009 por profissionais com ampla experiência no mercado financeiro.
+                    </h1>
+                    <a href="#" class="open-modal-button inline-block border border-white px-8 py-3 text-sm font-semibold hover:bg-white hover:text-[#2E5196] transition-colors duration-300" data-lang-key="hero_button">
+                        Ver +
+                    </a>
+                </div>
+            </div>
+
+            <!-- Coluna Direita (Imagem) --><div class="hero-image bg-gray-500 min-h-[400px] lg:min-h-0 bg-cover bg-center order-1 lg:order-2" 
+                 style="background-image: url('img/bg-home.png');">
+                </div>
+        </section>
+
+        <!-- =========== SEÇÃO DE VALORES (NOVA SEÇÃO) =========== --><section class="bg-white py-16 sm:py-24">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                    
+                    <!-- Item 1: Excelência --><div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#2E5196] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl">
+                           <img src="img/card-01.png">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-blue-800 uppercase tracking-wider mb-2" data-lang-key="values_excellence_title">EXCELÊNCIA</h3>
+                            <p class="text-gray-600 leading-relaxed" data-lang-key="values_excellence_text">
+                                Nossos clientes têm a confiança de que todas as operações recebem os nossos melhores esforços com o envolvimento de todos os sócios.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Alinhamento de Interesses --><div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#2E5196] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl">
+<img src="img/card-03.png">                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-blue-800 uppercase tracking-wider mb-2" data-lang-key="values_alignment_title">ALINHAMENTO DE INTERESSES</h3>
+                            <p class="text-gray-600 leading-relaxed" data-lang-key="values_alignment_text">
+                                Nosso mandato garante a ausência dos conflitos de interesse com fundos de investimento e outras instituições financeiras.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: Sigilo --><div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#2E5196] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl">
+<img src="img/card-02.png">                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-blue-800 uppercase tracking-wider mb-2" data-lang-key="values_confidentiality_title">SIGILO</h3>
+                            <p class="text-gray-600 leading-relaxed" data-lang-key="values_confidentiality_text">
+                                Nossa empresa tem como diretriz a discrição e a preservação do sigilo dos nossos clientes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Ética --><div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#2E5196] flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-xl">
+<img src="img/card-04.png">                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-blue-800 uppercase tracking-wider mb-2" data-lang-key="values_ethics_title">ÉTICA</h3>
+                            <p class="text-gray-600 leading-relaxed" data-lang-key="values_ethics_text">
+                                Respeitamos e valorizamos os acordos estabelecidos.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== SEÇÃO DE SERVIÇOS (TERCEIRA SEÇÃO) =========== --><section id="servicos-section" class="bg-white">
+            <!-- Barra de Título --><div class="bg-[#2E5196]">
+                <div class="container mx-auto px-6 lg:px-8 py-4">
+                    <h2 class="text-white text-center text-3xl md:text-4xl font-bold uppercase tracking-widest" data-lang-key="services_section_title">SERVIÇOS</h2>
+                </div>
+            </div>
+        
+            <!-- Conteúdo dos Serviços --><div class="container mx-auto px-6 lg:px-8 py-16 sm:py-24">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+                    <!-- Título M&A --><div class="lg:w-1/4 text-center lg:text-left">
+                        <h3 class="text-6xl md:text-7xl font-bold text-[#2E5196]">M&A</h3>
+                    </div>
+        
+                    <!-- Grid de Cards de Serviço --><div class="lg:w-3/4 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
+                        <!-- Card 1 --><div class="bg-[#2E5196] text-white p-8 rounded-md flex flex-col justify-between min-h-[220px] hover:scale-105 transition-transform duration-300">
+                            <div>
+                                <h4 class="text-lg font-bold uppercase" data-lang-key="services_sell_side_title">SELL SIDE</h4>
+                                <p class="text-lg font-bold uppercase mb-4" data-lang-key="services_sell_side_subtitle">(ATRAÇÃO DE INVESTIDORES)</p>
+                            </div>
+                            <a href="#" class="open-modal-button" data-modal-content="sell-side-content">
+                                <span class="font-semibold uppercase text-sm hover:underline" data-lang-key="services_sell_side_button">VER+</span>
+                            </a>
+                        </div>
+                        
+                        <!-- Card 2 --><div class="bg-[#2E5196] text-white p-8 rounded-md flex flex-col justify-between min-h-[220px] hover:scale-105 transition-transform duration-300">
+                            <div>
+                                <h4 class="text-lg font-bold uppercase" data-lang-key="services_buy_side_title">BUY SIDE</h4>
+                                <p class="text-lg font-bold uppercase mb-4" data-lang-key="services_buy_side_subtitle">(AQUISIÇÕES)</p>
+                            </div>
+                            <a href="#" class="open-modal-button" data-modal-content="buy-side-content">
+                                <span class="font-semibold uppercase text-sm hover:underline" data-lang-key="services_buy_side_button">VER+</span>
+                            </a>
+                        </div>
+                        
+                        <!-- Card 3 --><div class="bg-[#2E5196] text-white p-8 rounded-md flex flex-col justify-between min-h-[220px] hover:scale-105 transition-transform duration-300">
+                            <div>
+                                <h4 class="text-lg font-bold uppercase" data-lang-key="services_fusions_title">FUSÕES E JOINT VENTURE</h4>
+                            </div>
+                            <a href="#" class="open-modal-button" data-modal-content="fusions-joint-venture-content">
+                                <span class="font-semibold uppercase text-sm hover:underline" data-lang-key="services_fusions_button">VER+</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== SEÇÃO DE OUTROS SERVIÇOS (QUARTA SEÇÃO) =========== --><section class="bg-[#2E5196] py-16 sm:py-24">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                    <!-- Título --><div class="lg:w-1/3 text-center lg:text-left">
+                        <h3 class="text-5xl md:text-6xl font-light text-white uppercase leading-tight" data-lang-key="other_services_title">
+                            Outros<br>Serviços
+                        </h3>
+                    </div>
+        
+                    <!-- Grid de Cards --><div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+                        <!-- Card 1 --><div class="bg-white text-[#2E5196] p-8 rounded-md flex flex-col justify-between min-h-[200px] hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                            <div>
+                                <h4 class="text-lg font-bold uppercase" data-lang-key="other_services_valuation_title">LAUDOS DE AVALIAÇÃO</h4>
+                            </div>
+                            <a href="#" class="open-modal-button font-semibold uppercase text-sm hover:underline" data-modal-content="laudos-content" data-lang-key="other_services_valuation_button">VER+</a>
+                        </div>
+                        
+                        <!-- Card 2 --><div class="bg-white text-[#2E5196] p-8 rounded-md flex flex-col justify-between min-h-[200px] hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                            <div>
+                                <h4 class="text-lg font-bold uppercase" data-lang-key="other_services_debt_title">CAPTAÇÃO DE DÍVIDAS</h4>
+                            </div>
+                            <a href="#" class="open-modal-button font-semibold uppercase text-sm hover:underline" data-modal-content="dividas-content" data-lang-key="other_services_debt_button">VER+</a>
+                        </div>
+                        
+                        <!-- Card 3 --><div class="bg-white text-[#2E5196] p-8 rounded-md flex flex-col justify-between min-h-[200px] hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                            <div>
+                                <h4 class="text-lg font-bold uppercase" data-lang-key="other_services_project_finance_title">PROJECT FINANCE</h4>
+                            </div>
+                            <a href="#" class="open-modal-button font-semibold uppercase text-sm hover:underline" data-modal-content="project-finance-content" data-lang-key="other_services_project_finance_button">VER+</a>
+                        </div>
+
+                        <!-- Card 4 --><div class="bg-white text-[#2E5196] p-8 rounded-md flex flex-col justify-between min-h-[200px] hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                            <div>
+                                <h4 class="text-lg font-bold uppercase" data-lang-key="other_services_capital_markets_title">ACESSO AO MERCADO DE CAPITAIS</h4>
+                            </div>
+                            <a href="#" class="open-modal-button font-semibold uppercase text-sm hover:underline" data-modal-content="mercado-capitais-content" data-lang-key="other_services_capital_markets_button">VER+</a>
+                        </div>
+                        
+                        <!-- Card 5 --><div class="bg-white text-[#2E5196] p-8 rounded-md flex flex-col justify-between min-h-[200px] hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                            <div>
+                                <h4 class="text-lg font-bold uppercase" data-lang-key="other_services_governance_title">PROCESSO DE GOVERNANÇA CORPORATIVA</h4>
+                            </div>
+                            <a href="#" class="open-modal-button font-semibold uppercase text-sm hover:underline" data-modal-content="governance-process-content" data-lang-key="other_services_governance_button">VER+</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== SEÇÃO QUEM SOMOS (QUINTA SEÇÃO) =========== --><section id="quem-somos-section" class="bg-white py-16 sm:py-24">
+            <div class="container mx-auto px-6 lg:px-8">
+                <!-- Título da Seção --><h2 class="text-3xl font-bold text-center text-[#2E5196] uppercase tracking-widest mb-16" data-lang-key="about_section_title">
+                    QUEM SOMOS
+                </h2>
+        
+                <!-- Subseção: Conselho --><div class="mb-16">
+                    <div class="flex items-center mb-12">
+                        <h3 class="text-lg font-semibold text-[#2E5196] uppercase tracking-wider pr-6 shrink-0" data-lang-key="about_council_title">Conselho</h3>
+                        <div class="flex-grow h-px bg-gray-200"></div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-10">
+                            <!-- Perfil 1 --><div class="text-center">
+                                <img src="img/conselho/carloscastro.png" alt="Foto de Carlos Castro" class="profile-photo w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                                <h4 class="font-bold text-blue-800">CARLOS CASTRO</h4>
+                                <a href="#" class="open-modal-button text-xs text-gray-500 hover:text-[#2E5196] font-semibold uppercase tracking-wider" data-modal-content="carlos-castro-content" data-lang-key="about_council_button_1">VER +</a>
+                            </div>
+                            <!-- Perfil 2 --><div class="text-center">
+                                <img src="img/conselho/odilardo.png" alt="Foto de Odilardo Rodrigues" class="profile-photo w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                                <h4 class="font-bold text-blue-800">ODILARDO RODRIGUES</h4>
+                                <a href="#" class="open-modal-button text-xs text-gray-500 hover:text-[#2E5196] font-semibold uppercase tracking-wider" data-modal-content="odilardo-rodrigues-content" data-lang-key="about_council_button_2">VER +</a>
+                            </div>
+                            <!-- Perfil 3 --><div class="text-center">
+                                <img src="img/conselho/luizrossi.png" alt="Foto de Luiz Rossi" class="profile-photo w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                                <h4 class="font-bold text-blue-800">LUIZ ROSSI</h4>
+                                <a href="#" class="open-modal-button text-xs text-gray-500 hover:text-[#2E5196] font-semibold uppercase tracking-wider" data-modal-content="luiz-rossi-content" data-lang-key="about_council_button_3">VER +</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Subseção: Sócios --><div class="mb-16">
+                    <div class="flex items-center mb-12">
+                        <h3 class="text-lg font-semibold text-[#2E5196] uppercase tracking-wider pr-6 shrink-0" data-lang-key="about_partners_title">Sócios</h3>
+                        <div class="flex-grow h-px bg-gray-200"></div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-12">
+                            <!-- Perfil 1 --><div class="text-center max-w-[200px]">
+                                <img src="img/conselho/barbara.png" alt="Foto de Barbara Naves Barbiero" class="profile-photo w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                                <h4 class="font-bold text-blue-800">BARBARA NAVES BARBIERO</h4>
+                                <p class="text-xs text-gray-500 font-semibold uppercase" data-lang-key="about_partners_role_1">PROJETOS</p>
+                            </div>
+                            <!-- Perfil 2 --><div class="text-center max-w-[200px]">
+                                <img src="img/conselho/bruno.png" alt="Foto de Bruno Fischetti Cavalheiro" class="profile-photo w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                                <h4 class="font-bold text-blue-800">BRUNO FISCHETTI CAVALHEIRO</h4>
+                                <p class="text-xs text-gray-500 font-semibold uppercase">BUY SIDE</p>
+                            </div>
+                            <!-- Perfil 3 --><div class="text-center max-w-[200px]">
+                                <img src="img/conselho/felipe.png" alt="Foto de Felipe Ribeiro Magalhães" class="profile-photo w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                                <h4 class="font-bold text-blue-800">FELIPE RIBEIRO MAGALHÃES</h4>
+                                <p class="text-xs text-gray-500 font-semibold uppercase" data-lang-key="about_partners_role_2">BUY SIDE / PROJETOS</p>
+                            </div>
+                            <!-- Perfil 4 --><div class="text-center max-w-[200px]">
+                                <img src="img/conselho/giulio.png" alt="Foto de Giulio Macchini" class="profile-photo w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                                <h4 class="font-bold text-blue-800">GIULIO MACCHINI</h4>
+                                <p class="text-xs text-gray-500 font-semibold uppercase">SELL SIDE</p>
+                            </div>
+                            <!-- Perfil 5 --><div class="text-center max-w-[200px]">
+                                <img src="img/conselho/joao.png" alt="Foto de João Junquilho" class="profile-photo w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                                <h4 class="font-bold text-blue-800">JOÃO JUNQUILHO</h4>
+                                <p class="text-xs text-gray-500 font-semibold uppercase" data-lang-key="about_partners_role_3">ANÁLISE DE MERCADO</p>
+                            </div>
+                            <!-- Perfil 6 --><div class="text-center max-w-[200px]">
+                                <img src="img/conselho/vitor.png" alt="Foto de Vitor Bonvino" class="profile-photo w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                                <h4 class="font-bold text-blue-800">VITOR BONVINO</h4>
+                                <p class="text-xs text-gray-500 font-semibold uppercase" data-lang-key="about_partners_role_4">BUY SIDE / PROJETOS</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Subseção: Analistas --><div>
+                    <div class="flex items-center mb-12">
+                        <h3 class="text-lg font-semibold text-[#2E5196] uppercase tracking-wider pr-6 shrink-0" data-lang-key="about_analysts_title">Analistas</h3>
+                        <div class="flex-grow h-px bg-gray-200"></div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="grid grid-cols-2 gap-x-6 gap-y-10">
+                            <!-- Perfil 1 --><div class="text-center max-w-[200px]">
+                                <img src="img/conselho/enzo.png" alt="Foto de Enzo Gianobille" class="profile-photo w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                                <h4 class="font-bold text-blue-800">ENZO GIANOBILLE</h4>
+                                <p class="text-xs text-gray-500 font-semibold uppercase" data-lang-key="about_analysts_role_1">ANÁLISE DE MERCADO</p>
+                            </div>
+                            <!-- Perfil 2 --><div class="text-center max-w-[200px]">
+                                <img src="img/conselho/sofia.png" alt="Foto de Sofia Rossi" class="profile-photo w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                                <h4 class="font-bold text-blue-800">SOFIA ROSSI</h4>
+                                <p class="text-xs text-gray-500 font-semibold uppercase" data-lang-key="about_analysts_role_2">ANÁLISE DE MERCADO</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        </section>
+
+        <!-- =========== SEÇÃO TRANSAÇÕES (CARROSSEL) =========== --><section class="bg-[#2E5196] py-16 sm:py-24">
+            <div class="container mx-auto px-6 lg:px-8">
+                <h2 class="text-2xl font-bold text-center text-white uppercase tracking-wider mb-12" data-lang-key="transactions_title">
+                    PRINCIPAIS TRANSAÇÕES REALIZADAS
+                </h2>
+                
+                <!-- Wrapper to contain the carousel overflow, with padding to prevent clipping on hover --><div class="overflow-hidden px-4">
+                    <!-- Swiper --><div class="swiper mySwiper">
+                        <div class="swiper-wrapper py-8">
+                            <!-- Slide 1 --><div class="swiper-slide">
+                                <div class="bg-white rounded-lg p-6 text-center text-[#2E5196] flex flex-col items-center justify-around min-h-[360px] h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_1">Assessoramos a venda de 100% das ações da</p>
+                                    <img src="img/cards/aguia.png" alt="Logo Águia Química" class="my-4 max-w-full h-auto">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_2">Em uma operação para</p>
+                                    <img src="img/cards/allnex.png" alt="Logo allnex" class="my-4 max-w-full h-auto">
+                                </div>
+                            </div>
+                            <!-- Slide 2 --><div class="swiper-slide">
+                                <div class="bg-white rounded-lg p-6 text-center text-[#2E5196] flex flex-col items-center justify-around min-h-[360px] h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_3">Assessoramos a venda de 30% das ações da</p>
+                                    <img src="img/cards/guararapes.png" alt="Logo Guararapes" class="my-4 max-w-full h-auto">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_4">Em uma operação para</p>
+                                    <img src="img/cards/brz.png" alt="Logo BRZ Investimentos" class="my-4 max-w-full h-auto">
+                                </div>
+                            </div>
+                            <!-- Slide 3 --><div class="swiper-slide">
+                               <div class="bg-white rounded-lg p-6 text-center text-[#2E5196] flex flex-col items-center justify-around min-h-[360px] h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_5">Assessoramos a venda de 100% das ações da</p>
+                                    <img src="img/cards/nutrizon.png" alt="Logo nutrizon" class="my-4 max-w-full h-auto">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_6">Em uma operação para</p>
+                                    <img src="img/cards/neovia.png" alt="Logo neovia" class="my-4 max-w-full h-auto">
+                                </div>
+                            </div>
+                            <!-- Slide 4 --><div class="swiper-slide">
+                                 <div class="bg-white rounded-lg p-6 text-center text-[#2E5196] flex flex-col items-center justify-around min-h-[360px] h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_7">Assessoramos a venda de 100% das ações da</p>
+                                    <img src="img/cards/quimicryl.png" alt="Logo QUIMICRYL" class="my-4 max-w-full h-auto">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_8">Em uma operação para</p>
+                                    <img src="img/cards/parex.png" alt="Logo PAREX" class="my-4 max-w-full h-auto">
+                                </div>
+                            </div>
+                             <!-- Slide 5 --><div class="swiper-slide">
+                               <div class="bg-white rounded-lg p-6 text-center text-[#2E5196] flex flex-col items-center justify-around min-h-[360px] h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_9">Assessoramos a venda de 100% das ações da</p>
+                                    <img src="img/cards/tecnoseg.png" alt="Logo TECNOSEG" class="my-4 max-w-full h-auto">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_10">Em uma operação para</p>
+                                    <img src="img/cards/altum.png" alt="Logo grupo altum" class="my-4 max-w-full h-auto">
+                                </div>
+                            </div>
+                             <!-- Slide 6 --><div class="swiper-slide">
+                               <div class="bg-white rounded-lg p-6 text-center text-[#2E5196] flex flex-col items-center justify-around min-h-[360px] h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_11">Assessoramos a venda de 100% das ações da</p>
+                                    <img src="img/cards/goaltech.png" alt="Logo Goaltech" class="my-4 max-w-full h-auto">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_12">Em uma operação para</p>
+                                    <img src="img/cards/gtm.png" alt="Logo GTM" class="my-4 max-w-full h-auto">
+                                </div>
+                            </div>
+                             <!-- Slide 7 --><div class="swiper-slide">
+                               <div class="bg-white rounded-lg p-6 text-center text-[#2E5196] flex flex-col items-center justify-around min-h-[360px] h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_13">Assessoramos a venda de 100% das ações da</p>
+                                    <img src="img/cards/proquimil.png" alt="Logo PROQUIMIL" class="my-4 max-w-full h-auto">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_14">Em uma operação para</p>
+                                    <img src="img/cards/safic.png" alt="Logo SAFIC ALCAN" class="my-4 max-w-full h-auto">
+                                </div>
+                            </div>
+                             <!-- Slide 8 --><div class="swiper-slide">
+                               <div class="bg-white rounded-lg p-6 text-center text-[#2E5196] flex flex-col items-center justify-around min-h-[360px] h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_15">Assessoramos a venda de 100% das ações da</p>
+                                    <img src="img/cards/sarfam.png" alt="Logo SARFAM" class="my-4 max-w-full h-auto">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_16">Em uma operação para</p>
+                                    <img src="img/cards/safic.png" alt="Logo SAFIC ALCAN" class="my-4 max-w-full h-auto">
+                                </div>
+                            </div>
+                             <!-- Slide 9 --><div class="swiper-slide">
+                               <div class="bg-white rounded-lg p-6 text-center text-[#2E5196] flex flex-col items-center justify-around min-h-[360px] h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_17">Assessoramos a venda de 100% das ações da</p>
+                                    <img src="img/cards/alcolina.png" alt="Logo Alcolina" class="my-4 max-w-full h-auto">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_18">Em uma operação para</p>
+                                    <img src="img/cards/italmatch.png" alt="Logo Italmatch Chemicals" class="my-4 max-w-full h-auto">
+                                </div>
+                            </div>
+                             <!-- Slide 10 --><div class="swiper-slide">
+                               <div class="bg-white rounded-lg p-6 text-center text-[#2E5196] flex flex-col items-center justify-around min-h-[360px] h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_19">Assessoramos a venda de 100% das ações da</p>
+                                    <img src="img/cards/tripet.png" alt="Logo tripet" class="my-4 max-w-full h-auto">
+                                    <p class="font-semibold text-sm" data-lang-key="transaction_text_20">Em uma operação para</p>
+                                    <img src="img/cards/arguto.png" alt="Logo ARGUTS" class="my-4 max-w-full h-auto">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons --><div class="flex justify-center items-center mt-8 gap-4">
+                    <button id="swiper-prev" class="bg-white/20 hover:bg-white/40 text-white rounded-full w-12 h-12 flex items-center justify-center transition-colors disabled:opacity-50">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <button id="swiper-next" class="bg-white/20 hover:bg-white/40 text-white rounded-full w-12 h-12 flex items-center justify-center transition-colors disabled:opacity-50">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== SEÇÃO TRABALHE CONOSCO & CONTATO =========== --><section id="contato-section" class="container mx-auto px-6 lg:px-8 py-16 sm:py-24 pb-32 sm:pb-24 overflow-visible scroll-mt-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
+                <!-- Coluna Trabalhe Conosco --><div class="bg-[#2E5196] text-white p-8 sm:p-12 rounded-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <h2 class="text-xl font-bold uppercase tracking-wider mb-6" data-lang-key="work_with_us_title">TRABALHE CONOSCO</h2>
+                    <p class="font-light leading-relaxed" data-lang-key="work_with_us_text">
+                        A EP Capital tem comprometimento não só com o sucesso dos clientes e investidores, mas também com o crescimento e com as recompensas significativas da equipe. Em um ambiente dinâmico, a empresa oferece oportunidades de rápido aprendizado e carreira de longo prazo. Você está convidado a mandar o seu currículo na aba de contato. Caso haja uma oportunidade com o seu perfil, entraremos em contato.
+                    </p>
+                </div>
+
+                <!-- Coluna Contato --><div class="bg-[#eae9e9] p-8 sm:p-12 rounded-lg border border-gray-200 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <h2 class="text-xl font-bold uppercase tracking-wider mb-8 text-[#2E5196]" data-lang-key="contact_title">CONTATO</h2>
+                    <div class="space-y-6">
+                        <!-- Telefone --><div class="flex items-center">
+                            <div class="w-8 h-8 flex-shrink-0 mr-4 flex items-center justify-center">
+                               <img src="img/icons/phone.png" alt="Telefone" class="w-6 h-6">
+                            </div>
+                            <span class="text-gray-600">+55 (11) 3876-9310</span>
+                        </div>
+                        <!-- Email --><div class="flex items-center">
+                            <div class="w-8 h-8 flex-shrink-0 mr-4 flex items-center justify-center">
+                                <img src="img/icons/email.png" alt="Email" class="w-6 h-6">
+                            </div>
+                            <a href="mailto:administrativo@epcapital.com.br" class="text-gray-600 hover:text-[#2E5196]">administrativo@epcapital.com.br</a>
+                        </div>
+                        <!-- Endereço --><div class="flex items-start">
+                             <div class="w-8 h-8 flex-shrink-0 mr-4 flex items-center justify-center mt-1">
+                                <img src="img/icons/local.png" alt="Endereço" class="w-6 h-6">
+                            </div>
+                            <div class="text-gray-600" data-lang-key="contact_address">
+                                Rua Pedroso Alvarenga, 1284<br>
+                                14º andar, conjunto 142 – Itaim Bibi<br>
+                                São Paulo, SP, Brasil
+                            </div>
+                        </div>
+                                 <!-- LinkedIn --><div class="flex items-center">
+                                     <div class="w-8 h-8 flex-shrink-0 mr-4 flex items-center justify-center">
+                                         <img src="img/icons/linkedin.png" alt="LinkedIn" class="w-6 h-6">
+                                     </div>
+                                    <a href="https://linkedin.com/company/estrateplan" class="text-gray-600 hover:text-[#2E5196]" target="_blank" rel="noopener noreferrer">linkedin.com/company/EPCapital</a>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========== POPUP MODAL =========== --><div id="info-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl p-8 sm:p-12 relative">
+            <!-- Close Button --><button id="close-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+    
+            <!-- Dynamic Modal Content Area --><div id="modal-content-area" class="space-y-6 text-gray-700">
+                <!-- Conteúdo padrão ou específico será inserido aqui --></div>
+        </div>
+    </div>
+
+    <!-- Hidden content for modals --><div id="sell-side-content" class="hidden">
+        <h3 class="text-2xl font-bold text-[#2E5196] uppercase mb-6" data-lang-key="modal_sell_side_title">SELL SIDE (ATRAÇÃO DE INVESTIDORES)</h3>
+        <p class="mb-8 leading-relaxed" data-lang-key="modal_sell_side_intro">Assessoria a empresas na atração de investidores financeiros ou estratégicos, visando a alienação parcial ou total da empresa.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="font-bold text-[#2E5196] mb-4" data-lang-key="modal_sell_side_subtitle1">Preparo da companhia</h4>
+                <ul class="list-disc list-inside space-y-2" data-lang-key="modal_sell_side_list1">
+                    <li>Definição da estrutura ideal da transação</li>
+                    <li>Diagnóstico econômico-financeiro</li>
+                    <li>Projeções e Valuation</li>
+                    <li>Elaboração de materiais de apresentação</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-[#2E5196] mb-4" data-lang-key="modal_sell_side_subtitle2">Atração de Investidores</h4>
+                <ul class="list-disc list-inside space-y-2" data-lang-key="modal_sell_side_list2">
+                    <li>Mapeamento de mercado</li>
+                    <li>Apresentação da empresa</li>
+                    <li>Análises financeiras e estratégicas específicas</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-[#2E5196] mb-4" data-lang-key="modal_sell_side_subtitle3">Negociação e fechamento</h4>
+                <ul class="list-disc list-inside space-y-2" data-lang-key="modal_sell_side_list3">
+                    <li>Escolha da proposta mais adequada</li>
+                    <li>Coordenação do processo de diligência</li>
+                    <li>Suporte na negociação e elaboração dos contratos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="buy-side-content" class="hidden">
+        <h3 class="text-2xl font-bold text-[#2E5196] uppercase mb-6" data-lang-key="modal_buy_side_title">BUY SIDE (AQUISIÇÕES)</h3>
+        <p class="mb-8 leading-relaxed" data-lang-key="modal_buy_side_intro">A EP Capital assessora investidores na identificação das empresas alvo mais adequadas às suas estratégias de investimento.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="font-bold text-[#2E5196] mb-4" data-lang-key="modal_buy_side_subtitle1">Mapeamento de alvos</h4>
+                <ul class="list-disc list-inside space-y-2" data-lang-key="modal_buy_side_list1">
+                    <li>Alinhamento da estratégia de aquisição</li>
+                    <li>Análise e mapeamento setorial</li>
+                    <li>Seleção e abordagem das empresas</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-[#2E5196] mb-4" data-lang-key="modal_buy_side_subtitle2">Análise financeira do investimento</h4>
+                <ul class="list-disc list-inside space-y-2" data-lang-key="modal_buy_side_list2">
+                    <li>Avaliação das empresas</li>
+                    <li>Identificação e análise de sinergias</li>
+                    <li>Material de apresentação para o conselho</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-[#2E5196] mb-4" data-lang-key="modal_buy_side_subtitle3">Negociação e fechamento</h4>
+                <ul class="list-disc list-inside space-y-2" data-lang-key="modal_buy_side_list3">
+                    <li>Definição da estratégia de negociação</li>
+                    <li>Apoio no processo de diligência</li>
+                    <li>Suporte na negociação e na elaboração de contratos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="fusions-joint-venture-content" class="hidden">
+        <h3 class="text-2xl font-bold text-[#2E5196] uppercase mb-6" data-lang-key="modal_fusions_title">FUSÕES E JOINT VENTURE</h3>
+        <p class="mb-8 leading-relaxed" data-lang-key="modal_fusions_intro">Toda operação de fusão entre empresas ou joint venture requer uma apurada mensuração de potenciais ganhos e riscos à nova companhia, a fim de que, uma vez estruturada a parceria, as sinergias possam ser maximizadas.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h4 class="font-bold text-[#2E5196] mb-4" data-lang-key="modal_fusions_subtitle1">Preparo da companhia</h4>
+                <ul class="list-disc list-inside space-y-2" data-lang-key="modal_fusions_list1">
+                    <li>Análise setorial</li>
+                    <li>Mapeamento de parceiros</li>
+                    <li>Interlocução e apresentação das partes</li>
+                    <li>Avaliação econômico-financeira</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-[#2E5196] mb-4" data-lang-key="modal_fusions_subtitle2">Análises de viabilidade</h4>
+                <ul class="list-disc list-inside space-y-2" data-lang-key="modal_fusions_list2">
+                    <li>Definição da estrutura ideal da transação</li>
+                    <li>Mensuração de sinergias e riscos</li>
+                    <li>Análise econômico-financeira da nova empresa</li>
+                    <li>Formatação da estrutura societária</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-[#2E5196] mb-4" data-lang-key="modal_fusions_subtitle3">Negociação e fechamento</h4>
+                <ul class="list-disc list-inside space-y-2" data-lang-key="modal_fusions_list3">
+                    <li>Definição da estratégia de negociação</li>
+                    <li>Coordenação do processo de diligência</li>
+                    <li>Suporte na negociação e na elaboração de contratos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="laudos-content" class="hidden">
+        <h3 class="text-2xl font-bold text-[#2E5196] uppercase mb-6" data-lang-key="modal_valuation_title">LAUDOS DE AVALIAÇÃO</h3>
+        <p data-lang-key="modal_valuation_text1">A EP Capital prepara laudos e pareceres que objetivam amparar decisões financeiras, legais, tributárias, operacionais, entre outras. A equipe é composta por doutores e professores em finanças, com ampla experiência no mercado financeiro e credenciais para avaliar e emitir pareceres para autoridades públicas, conselhos, investidores, advogados e câmaras de arbitragem.</p>
+        <p class="mt-4" data-lang-key="modal_valuation_text2">Os laudos de avaliação do valor da empresa, dívida e equity, elaborados pela EP Capital possuem as seguintes aplicações:</p>
+        <ul class="list-disc list-inside space-y-2 mt-4" data-lang-key="modal_valuation_list">
+            <li>Apoio a litigantes em disputas judiciais</li>
+            <li>Contabilização de ativos em fundos de investimento</li>
+            <li>Reavaliação de ativos para fins contábeis</li>
+        </ul>
+    </div>
+
+    <div id="dividas-content" class="hidden">
+        <h3 class="text-2xl font-bold text-[#2E5196] uppercase mb-6" data-lang-key="modal_debt_title">CAPTAÇÃO DE DÍVIDAS</h3>
+        <p data-lang-key="modal_debt_text1">A EP Capital apoia empresas na captação de dívidas através de operações que visam melhorar a estrutura de capital da companhia, minimizar custos financeiros e viabilizar projetos de investimento.</p>
+        <p class="mt-4" data-lang-key="modal_debt_text2">Principais serviços de dívida estruturada oferecidos:</p>
+        <ul class="list-disc list-inside space-y-2 mt-4" data-lang-key="modal_debt_list">
+            <li>BNDES e outros órgãos de fomento</li>
+            <li>Emissão de debêntures</li>
+            <li>Dívida mezanino</li>
+            <li>Estruturação de CRI, CRA e FIDC</li>
+        </ul>
+    </div>
+
+    <div id="project-finance-content" class="hidden">
+        <h3 class="text-2xl font-bold text-[#2E5196] uppercase mb-6" data-lang-key="modal_project_finance_title">PROJECT FINANCE</h3>
+        <p data-lang-key="modal_project_finance_text1">A EP Capital assessora empresas em projetos que demandam experiência e conhecimento técnico diferenciado para a tomada de decisões estratégicas relevantes.</p>
+        <p class="mt-4" data-lang-key="modal_project_finance_text2">Principais serviços oferecidos em Project Finance:</p>
+        <ul class="list-disc list-inside space-y-2 mt-4" data-lang-key="modal_project_finance_list">
+            <li>Estudo de viabilidade de projetos</li>
+            <li>PPP</li>
+            <li>BNDES</li>
+        </ul>
+    </div>
+
+    <div id="mercado-capitais-content" class="hidden">
+        <h3 class="text-2xl font-bold text-[#2E5196] uppercase mb-6" data-lang-key="modal_capital_markets_title">ACESSO AO MERCADO DE CAPITAIS</h3>
+        <p data-lang-key="modal_capital_markets_text1">Auxiliamos empresas na preparação para acesso ao mercado de capitais, nas modalidades Mercado de Acesso, IPO e DCM.</p>
+        <ul class="list-disc list-inside space-y-2 mt-4" data-lang-key="modal_capital_markets_list">
+            <li>Preparo da documentação a ser entregue para a CVM e B3</li>
+            <li>Apoio na seleção e coordenação de demais participantes do processo, como escritórios de advocacia, auditores, custodiantes e agências de rating</li>
+            <li>Atuação ativa no road show para investidores institucionais</li>
+        </ul>
+    </div>
+
+    <div id="governance-process-content" class="hidden">
+        <h3 class="text-2xl font-bold text-[#2E5196] uppercase mb-6" data-lang-key="modal_governance_title">PROCESSO DE GOVERNANÇA CORPORATIVA</h3>
+        <p data-lang-key="modal_governance_text1">A EP Capital apoia empresas e grupos empresariais na estruturação e fortalecimento de processos de governança corporativa, assegurando maior transparência, eficiência e alinhamento estratégico entre sócios, gestores e stakeholders. O trabalho é conduzido por profissionais com sólida experiência em finanças corporativas, reestruturação e controles internos, garantindo a implementação de boas práticas de governança adaptadas à realidade de cada negócio.</p>
+        <p class="mt-4" data-lang-key="modal_governance_text2">As soluções de governança corporativa elaboradas pela EP Capital possuem as seguintes aplicações:</p>
+        <ul class="list-disc list-inside space-y-2 mt-4" data-lang-key="modal_governance_list">
+            <li data-lang-key="modal_governance_item1">Rearranjo societário</li>
+            <li data-lang-key="modal_governance_item2">Estruturação de organograma societário</li>
+            <li data-lang-key="modal_governance_item3">Definição de parâmetros contábeis e métricas de performance</li>
+        </ul>
+    </div>
+
+    <div id="carlos-castro-content" class="hidden">
+        <h3 class="text-2xl font-bold text-[#2E5196] uppercase mb-6">CARLOS CASTRO</h3>
+        <p data-lang-key="modal_castro_text1">Carlos Castro é membro do Conselho Consultivo da EP Capital e tem grande experiência na área bancária, com foco no comercial e crédito. Atuou como diretor de crédito e cobrança para o Middle e Corporate do Itaú/BBA. Foi CEO do Interbanco (operação do Unibanco no Paraguai) e atuou como Diretor Corporate do Banco Nacional S.A e Diretor de Crédito e Risco das Unidades Externas – Latam do Itaú Unibanco.</p>
+        <p class="mt-4" data-lang-key="modal_castro_text2">Atualmente é membro do Conselho e Presidente do Comitê de Auditoria do Banco Itaú Paraguay e Presidente do Comitê de Auditoria da OCA S.A (empresa do Grupo Itaú Unibanco no Uruguay). Administrador de empresas pela FEA-USP, com pós-graduação pela EAESP – FGV e MBA pela FIA. Participou de operações financeiras para todos os segmentos da economia.</p>
+    </div>
+
+    <div id="odilardo-rodrigues-content" class="hidden">
+        <h3 class="text-2xl font-bold text-[#2E5196] uppercase mb-6">ODILARDO RODRIGUES</h3>
+        <p data-lang-key="modal_rodrigues_text1">Odilardo Rodrigues atua há 52 anos no mercado financeiro e é membro do Conselho Consultivo da EP Capital. Foi Diretor de Operações Estruturadas do Banco Bradesco S/A e Vice-presidente de Administração e Finanças do Grupo Victor Malzoni. Diretor do Corporate do Banco BCN. No início da carreira atuou com destaque na área comercial do Chase Manhattan Bank, migrando em seguida para a área de operações estruturadas (Corporate Finance) e mercado de capitais. Formado em Ciências Contábeis pela Fundação Visconde de Cairú, participou de diversas operações de compra e venda de empresas, bem como importantes operações de mercado de capitais, destacando-se a venda da totalidade das participações em shopping centers detidas pelo Grupo Malzoni para o grupo Brascan, dentre centenas de outras operações estruturadas.</p>
+    </div>
+
+    <div id="luiz-rossi-content" class="hidden">
+        <h3 class="text-2xl font-bold text-[#2E5196] uppercase mb-6">LUIZ ROSSI</h3>
+        <p data-lang-key="modal_rossi_text1">Luiz Rossi atua nas áreas de finanças corporativas e bancária. Foi diretor executivo da área corporate do BBVA e diretor corporate do BCN | Bradesco. Atuou na Accenture na área de estratégia para as empresas dos setores de tecnologia, comunicação e telecomunicações. Possui sólidos conhecimentos da operacionalidade de diversos setores e indústrias.</p>
+        <p class="mt-4" data-lang-key="modal_rossi_text2">No âmbito acadêmico, foi professor de finanças da graduação em administração da FEA – USP e nos cursos de MBA da FIA e FGV. Possuí pós-doutorado e doutorado pela FEA-USP, mestrado em finanças pela FGV, pós-graduação em finanças pelo IBMEC e FGV. Graduou-se em engenharia agronômica pela ESALQ-USP.</p>
+        <p class="mt-4" data-lang-key="modal_rossi_text3">Autor do livro “Manual de Private Equity e Venture Capital” pela editora Atlas.</p>
+    </div>
+
+    <div id="default-modal-content" class="hidden">
+        <p data-lang-key="modal_default_p1">A EP Capital é uma empresa de assessoria financeira independente especializada em Fusões e Aquisições (M&A), fundada em 2009 por profissionais com ampla experiência no mercado financeiro.</p>
+        <p data-lang-key="modal_default_p2">Inicialmente conhecida como Estrateplan, a EP Capital evoluiu e assumiu um novo posicionamento de mercado, aumentando a capacidade da empresa de prestar serviços de assessoria financeira com alta eficiência.</p>
+        <p data-lang-key="modal_default_p3">A EP Capital assessora empresas com posicionamento middle e corporate market de diversos setores, contribuindo para que seus clientes atinjam seus objetivos estratégicos e financeiros, através da busca de investidores nos mercados local e global.</p>
+        <p data-lang-key="modal_default_p4">Com uma rede de relacionamentos internacional, elevado rigor técnico e a experiência profissional da equipe, a EP Capital proporciona aos seus clientes locais a realização de negócios "cross border", maximizando os resultados das soluções desenvolvidas.</p>
+    </div>
+
+
+    <!-- Script para funcionalidade do menu mobile --><script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Funcionalidade do Menu Mobile
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Efeito de hover para as fotos da equipe
+            const profilePhotos = document.querySelectorAll('.profile-photo');
+            profilePhotos.forEach(photo => {
+                photo.style.transition = 'transform 0.3s ease-in-out';
+                photo.addEventListener('mouseover', () => {
+                    photo.style.transform = 'scale(1.1)';
+                });
+                photo.addEventListener('mouseout', () => {
+                    photo.style.transform = 'scale(1)';
+                });
+            });
+
+            // Swiper Carousel Initialization
+            var swiper = new Swiper(".mySwiper", {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                breakpoints: {
+                    768: { slidesPerView: 2, spaceBetween: 30 },
+                    1024: { slidesPerView: 3, spaceBetween: 30 }
+                },
+                navigation: {
+                    nextEl: "#swiper-next",
+                    prevEl: "#swiper-prev",
+                },
+            });
+
+            // Scrollspy para destacar o menu
+            const sections = document.querySelectorAll('main section[id]');
+            const navLinks = document.querySelectorAll('header nav a');
+            const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-100px 0px -50% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionId = entry.target.id;
+                        
+                        // Atualiza links do menu desktop
+                        navLinks.forEach(link => {
+                            link.classList.remove('text-[#2E5196]');
+                            link.classList.add('text-gray-500');
+                            const linkHref = link.getAttribute('href').substring(1);
+                            if (linkHref === sectionId) {
+                                link.classList.add('text-[#2E5196]');
+                                link.classList.remove('text-gray-500');
+                            }
+                        });
+
+                        // Atualiza links do menu mobile
+                        mobileNavLinks.forEach(link => {
+                             link.classList.remove('bg-gray-100', 'text-[#2E5196]');
+                            const linkHref = link.getAttribute('href').substring(1);
+                            if (linkHref === sectionId) {
+                                 link.classList.add('bg-gray-100', 'text-[#2E5196]');
+                            }
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                if(section.id) observer.observe(section);
+            });
+
+            // Rolagem suave ao clicar nos links do menu mobile e fechar o menu
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                     mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Funcionalidade do Modal
+            const modal = document.getElementById('info-modal');
+            const modalContentArea = document.getElementById('modal-content-area');
+            const closeModalButton = document.getElementById('close-modal-button');
+            const openModalButtons = document.querySelectorAll('.open-modal-button');
+
+            // Conteúdos específicos
+            const contentMap = {
+                'sell-side-content': document.getElementById('sell-side-content').innerHTML,
+                'buy-side-content': document.getElementById('buy-side-content').innerHTML,
+                'fusions-joint-venture-content': document.getElementById('fusions-joint-venture-content').innerHTML,
+                'laudos-content': document.getElementById('laudos-content').innerHTML,
+                'dividas-content': document.getElementById('dividas-content').innerHTML,
+                'project-finance-content': document.getElementById('project-finance-content').innerHTML,
+                'mercado-capitais-content': document.getElementById('mercado-capitais-content').innerHTML,
+                'carlos-castro-content': document.getElementById('carlos-castro-content').innerHTML,
+                'odilardo-rodrigues-content': document.getElementById('odilardo-rodrigues-content').innerHTML,
+                'luiz-rossi-content': document.getElementById('luiz-rossi-content').innerHTML
+            };
+            const defaultModalContent = document.getElementById('default-modal-content').innerHTML;
+
+
+            const openModal = (contentHtml) => {
+                modalContentArea.innerHTML = contentHtml;
+                modal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden'); // Impede scroll do body
+                switchLanguage(currentLanguage, true); // Traduz o conteúdo do modal aberto
+            };
+
+            const closeModal = () => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden'); // Restaura scroll do body
+            };
+
+            openModalButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault(); // Impede o comportamento padrão do link
+
+                    const contentId = button.dataset.modalContent;
+                    const contentToDisplay = contentMap[contentId] || defaultModalContent;
+
+                    openModal(contentToDisplay);
+                });
+            });
+
+            closeModalButton.addEventListener('click', closeModal);
+
+            // Fecha o modal ao clicar no fundo
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // ===== LÓGICA DE TRADUÇÃO =====
+            const translations = {
+                'pt': {
+                    'nav_ep_capital': 'EP CAPITAL', 'nav_servicos': 'SERVIÇOS', 'nav_quem_somos': 'QUEM SOMOS', 'nav_trabalhe_na_ep': 'TRABALHE NA EP', 'nav_contato': 'CONTATO',
+                    'nav_ep_capital_mobile': 'EP CAPITAL', 'nav_servicos_mobile': 'SERVIÇOS', 'nav_quem_somos_mobile': 'QUEM SOMOS', 'nav_trabalhe_na_ep_mobile': 'TRABALHE NA EP', 'nav_contato_mobile': 'CONTATO', 'nav_idioma_mobile': 'Idioma:',
+                    'hero_title': 'A EP Capital é uma empresa de assessoria financeira independente especializada em Fusões e Aquisições (M&A), fundada em 2009 por profissionais com ampla experiência no mercado financeiro.',
+                    'hero_button': 'Ver +',
+                    'values_excellence_title': 'EXCELÊNCIA', 'values_excellence_text': 'Nossos clientes têm a confiança de que todas as operações recebem os nossos melhores esforços com o envolvimento de todos os sócios.',
+                    'values_alignment_title': 'ALINHAMENTO DE INTERESSES', 'values_alignment_text': 'Nosso mandato garante a ausência dos conflitos de interesse com fundos de investimento e outras instituições financeiras.',
+                    'values_confidentiality_title': 'SIGILO', 'values_confidentiality_text': 'Nossa empresa tem como diretriz a discrição e a preservação do sigilo dos nossos clientes.',
+                    'values_ethics_title': 'ÉTICA', 'values_ethics_text': 'Respeitamos e valorizamos os acordos estabelecidos.',
+                    'services_section_title': 'SERVIÇOS', 'services_sell_side_title': 'SELL SIDE', 'services_sell_side_subtitle': '(ATRAÇÃO DE INVESTIDORES)', 'services_sell_side_button': 'VER+',
+                    'services_buy_side_title': 'BUY SIDE', 'services_buy_side_subtitle': '(AQUISIÇÕES)', 'services_buy_side_button': 'VER+', 'services_fusions_title': 'FUSÕES E JOINT VENTURE', 'services_fusions_button': 'VER+',
+                    'other_services_title': 'Outros<br>Serviços', 'other_services_valuation_title': 'LAUDOS DE AVALIAÇÃO', 'other_services_valuation_button': 'VER+',
+                    'other_services_debt_title': 'CAPTAÇÃO DE DÍVIDAS', 'other_services_debt_button': 'VER+', 'other_services_project_finance_title': 'PROJECT FINANCE', 'other_services_project_finance_button': 'VER+',
+                    'other_services_capital_markets_title': 'ACESSO AO MERCADO DE CAPITAIS', 'other_services_capital_markets_button': 'VER+',
+                    'other_services_governance_title': 'PROCESSO DE GOVERNANÇA CORPORATIVA', 'other_services_governance_button': 'VER+',
+                    'about_section_title': 'QUEM SOMOS', 'about_council_title': 'Conselho', 'about_council_button_1': 'VER +', 'about_council_button_2': 'VER +', 'about_council_button_3': 'VER +',
+                    'about_partners_title': 'Sócios', 'about_partners_role_1': 'PROJETOS', 'about_partners_role_2': 'BUY SIDE / PROJETOS', 'about_partners_role_3': 'ANÁLISE DE MERCADO', 'about_partners_role_4': 'BUY SIDE / PROJETOS',
+                    'about_analysts_title': 'Analistas', 'about_analysts_role_1': 'ANÁLISE DE MERCADO', 'about_analysts_role_2': 'ANÁLISE DE MERCADO',
+                    'transactions_title': 'PRINCIPAIS TRANSAÇÕES REALIZADAS',
+                    'transaction_text_1': 'Assessoramos a venda de 100% das ações da', 'transaction_text_2': 'Em uma operação para', 'transaction_text_3': 'Assessoramos a venda de 30% das ações da', 'transaction_text_4': 'Em uma operação para',
+                    'transaction_text_5': 'Assessoramos a venda de 100% das ações da', 'transaction_text_6': 'Em uma operação para', 'transaction_text_7': 'Assessoramos a venda de 100% das ações da', 'transaction_text_8': 'Em uma operação para',
+                    'transaction_text_9': 'Assessoramos a venda de 100% das ações da', 'transaction_text_10': 'Em uma operação para', 'transaction_text_11': 'Assessoramos a venda de 100% das ações da', 'transaction_text_12': 'Em uma operação para',
+                    'transaction_text_13': 'Assessoramos a venda de 100% das ações da', 'transaction_text_14': 'Em uma operação para', 'transaction_text_15': 'Assessoramos a venda de 100% das ações da', 'transaction_text_16': 'Em uma operação para',
+                    'transaction_text_17': 'Assessoramos a venda de 100% das ações da', 'transaction_text_18': 'Em uma operação para', 'transaction_text_19': 'Assessoramos a venda de 100% das ações da', 'transaction_text_20': 'Em uma operação para',
+                    'work_with_us_title': 'TRABALHE CONOSCO', 'work_with_us_text': 'A EP Capital tem comprometimento não só com o sucesso dos clientes e investidores, mas também com o crescimento e com as recompensas significativas da equipe. Em um ambiente dinâmico, a empresa oferece oportunidades de rápido aprendizado e carreira de longo prazo. Você está convidado a mandar o seu currículo na aba de contato. Caso haja uma oportunidade com o seu perfil, entraremos em contato.',
+                    'contact_title': 'CONTATO', 'contact_address': 'Rua Pedroso Alvarenga, 1284<br>14º andar, conjunto 142 – Itaim Bibi<br>São Paulo, SP, Brasil',
+                    'modal_default_p1': 'A EP Capital é uma empresa de assessoria financeira independente especializada em Fusões e Aquisições (M&A), fundada em 2009 por profissionais com ampla experiência no mercado financeiro.',
+                    'modal_default_p2': 'Inicialmente conhecida como Estrateplan, a EP Capital evoluiu e assumiu um novo posicionamento de mercado, aumentando a capacidade da empresa de prestar serviços de assessoria financeira com alta eficiência.',
+                    'modal_default_p3': 'A EP Capital assessora empresas com posicionamento middle e corporate market de diversos setores, contribuindo para que seus clientes atinjam seus objetivos estratégicos e financeiros, através da busca de investidores nos mercados local e global.',
+                    'modal_default_p4': 'Com uma rede de relacionamentos internacional, elevado rigor técnico e a experiência profissional da equipe, a EP Capital proporciona aos seus clientes locais a realização de negócios "cross border", maximizando os resultados das soluções desenvolvidas.',
+                    'modal_sell_side_title': 'SELL SIDE (ATRAÇÃO DE INVESTIDORES)', 'modal_sell_side_intro': 'Assessoria a empresas na atração de investidores financeiros ou estratégicos, visando a alienação parcial ou total da empresa.', 'modal_sell_side_subtitle1': 'Preparo da companhia', 'modal_sell_side_list1': '<li>Definição da estrutura ideal da transação</li><li>Diagnóstico econômico-financeiro</li><li>Projeções e Valuation</li><li>Elaboração de materiais de apresentação</li>', 'modal_sell_side_subtitle2': 'Atração de Investidores', 'modal_sell_side_list2': '<li>Mapeamento de mercado</li><li>Apresentação da empresa</li><li>Análises financeiras e estratégicas específicas</li>', 'modal_sell_side_subtitle3': 'Negociação e fechamento', 'modal_sell_side_list3': '<li>Escolha da proposta mais adequada</li><li>Coordenação do processo de diligência</li><li>Suporte na negociação e elaboração dos contratos</li>',
+                    'modal_buy_side_title': 'BUY SIDE (AQUISIÇÕES)', 'modal_buy_side_intro': 'A EP Capital assessora investidores na identificação das empresas alvo mais adequadas às suas estratégias de investimento.', 'modal_buy_side_subtitle1': 'Mapeamento de alvos', 'modal_buy_side_list1': '<li>Alinhamento da estratégia de aquisição</li><li>Análise e mapeamento setorial</li><li>Seleção e abordagem das empresas</li>', 'modal_buy_side_subtitle2': 'Análise financeira do investimento', 'modal_buy_side_list2': '<li>Avaliação das empresas</li><li>Identificação e análise de sinergias</li><li>Material de apresentação para o conselho</li>', 'modal_buy_side_subtitle3': 'Negociação e fechamento', 'modal_buy_side_list3': '<li>Definição da estratégia de negociação</li><li>Apoio no processo de diligência</li><li>Suporte na negociação e na elaboração de contratos</li>',
+                    'modal_fusions_title': 'FUSÕES E JOINT VENTURE', 'modal_fusions_intro': 'Toda operação de fusão entre empresas ou joint venture requer uma apurada mensuração de potenciais ganhos e riscos à nova companhia, a fim de que, uma vez estruturada a parceria, as sinergias possam ser maximizadas.', 'modal_fusions_subtitle1': 'Preparo da companhia', 'modal_fusions_list1': '<li>Análise setorial</li><li>Mapeamento de parceiros</li><li>Interlocução e apresentação das partes</li><li>Avaliação econômico-financeira</li>', 'modal_fusions_subtitle2': 'Análises de viabilidade', 'modal_fusions_list2': '<li>Definição da estrutura ideal da transação</li><li>Mensuração de sinergias e riscos</li><li>Análise econômico-financeira da nova empresa</li><li>Formatação da estrutura societária</li>', 'modal_fusions_subtitle3': 'Negociação e fechamento', 'modal_fusions_list3': '<li>Definição da estratégia de negociação</li><li>Coordenação do processo de diligência</li><li>Suporte na negociação e na elaboração de contratos</li>',
+                    'modal_valuation_title': 'LAUDOS DE AVALIAÇÃO', 'modal_valuation_text1': 'A EP Capital prepara laudos e pareceres que objetivam amparar decisões financeiras, legais, tributárias, operacionais, entre outras. A equipe é composta por doutores e professores em finanças, com ampla experiência no mercado financeiro e credenciais para avaliar e emitir pareceres para autoridades públicas, conselhos, investidores, advogados e câmaras de arbitragem.', 'modal_valuation_text2': 'Os laudos de avaliação do valor da empresa, dívida e equity, elaborados pela EP Capital possuem as seguintes aplicações:', 'modal_valuation_list': '<li>Apoio a litigantes em disputas judiciais</li><li>Contabilização de ativos em fundos de investimento</li><li>Reavaliação de ativos para fins contábeis</li>', 'modal_governance_title': 'PROCESSO DE GOVERNANÇA CORPORATIVA', 'modal_governance_text1': 'A EP Capital apoia empresas e grupos empresariais na estruturação e fortalecimento de processos de governança corporativa, assegurando maior transparência, eficiência e alinhamento estratégico entre sócios, gestores e stakeholders. O trabalho é conduzido por profissionais com sólida experiência em finanças corporativas, reestruturação e controles internos, garantindo a implementação de boas práticas de governança adaptadas à realidade de cada negócio.', 'modal_governance_text2': 'As soluções de governança corporativa elaboradas pela EP Capital possuem as seguintes aplicações:', 'modal_governance_list': '<li>Rearranjo societário</li><li>Estruturação de organograma societário</li><li>Definição de parâmetros contábeis e métricas de performance</li>',
+                    'modal_debt_title': 'CAPTAÇÃO DE DÍVIDAS', 'modal_debt_text1': 'A EP Capital apoia empresas na captação de dívidas através de operações que visam melhorar a estrutura de capital da companhia, minimizar custos financeiros e viabilizar projetos de investimento.', 'modal_debt_text2': 'Principais serviços de dívida estruturada oferecidos:', 'modal_debt_list': '<li>BNDES e outros órgãos de fomento</li><li>Emissão de debêntures</li><li>Dívida mezanino</li><li>Estruturação de CRI, CRA e FIDC</li>',
+                    'modal_project_finance_title': 'PROJECT FINANCE', 'modal_project_finance_text1': 'A EP Capital assessora empresas em projetos que demandam experiência e conhecimento técnico diferenciado para a tomada de decisões estratégicas relevantes.', 'modal_project_finance_text2': 'Principais serviços oferecidos em Project Finance:', 'modal_project_finance_list': '<li>Estudo de viabilidade de projetos</li><li>PPP</li><li>BNDES</li>',
+                    'modal_capital_markets_title': 'ACESSO AO MERCADO DE CAPITAIS', 'modal_capital_markets_text1': 'Auxiliamos empresas na preparação para acesso ao mercado de capitais, nas modalidades Mercado de Acesso, IPO e DCM.', 'modal_capital_markets_list': '<li>Preparo da documentação a ser entregue para a CVM e B3</li><li>Apoio na seleção e coordenação de demais participantes do processo, como escritórios de advocacia, auditores, custodiantes e agências de rating</li><li>Atuação ativa no road show para investidores institucionais</li>',
+                    'modal_castro_text1': 'Carlos Castro é membro do Conselho Consultivo da EP Capital e tem grande experiência na área bancária, com foco no comercial e crédito. Atuou como diretor de crédito e cobrança para o Middle e Corporate do Itaú/BBA. Foi CEO do Interbanco (operação do Unibanco no Paraguai) e atuou como Diretor Corporate do Banco Nacional S.A e Diretor de Crédito e Risco das Unidades Externas – Latam do Itaú Unibanco.', 'modal_castro_text2': 'Atualmente é membro do Conselho e Presidente do Comitê de Auditoria do Banco Itaú Paraguay e Presidente do Comitê de Auditoria da OCA S.A (empresa do Grupo Itaú Unibanco no Uruguay). Administrador de empresas pela FEA-USP, com pós-graduação pela EAESP – FGV e MBA pela FIA. Participou de operações financeiras para todos os segmentos da economia.',
+                    'modal_rodrigues_text1': 'Odilardo Rodrigues atua há 52 anos no mercado financeiro e é membro do Conselho Consultivo da EP Capital. Foi Diretor de Operações Estruturadas do Banco Bradesco S/A e Vice-presidente de Administração e Finanças do Grupo Victor Malzoni. Diretor do Corporate do Banco BCN. No início da carreira atuou com destaque na área comercial do Chase Manhattan Bank, migrando em seguida para a área de operações estruturadas (Corporate Finance) e mercado de capitais. Formado em Ciências Contábeis pela Fundação Visconde de Cairú, participou de diversas operações de compra e venda de empresas, bem como importantes operações de mercado de capitais, destacando-se a venda da totalidade das participações em shopping centers detidas pelo Grupo Malzoni para o grupo Brascan, dentre centenas de outras operações estruturadas.',
+                    'modal_rossi_text1': 'Luiz Rossi atua nas áreas de finanças corporativas e bancária. Foi diretor executivo da área corporate do BBVA e diretor corporate do BCN | Bradesco. Atuou na Accenture na área de estratégia para as empresas dos setores de tecnologia, comunicação e telecomunicações. Possui sólidos conhecimentos da operacionalidade de diversos setores e indústrias.', 'modal_rossi_text2': 'No âmbito acadêmico, foi professor de finanças da graduação em administração da FEA – USP e nos cursos de MBA da FIA e FGV. Possuí pós-doutorado e doutorado pela FEA-USP, mestrado em finanças pela FGV, pós-graduação em finanças pelo IBMEC e FGV. Graduou-se em engenharia agronômica pela ESALQ-USP.', 'modal_rossi_text3': 'Autor do livro “Manual de Private Equity e Venture Capital” pela editora Atlas.'
+                },
+                'en': {
+                    'nav_ep_capital': 'EP CAPITAL', 'nav_servicos': 'SERVICES', 'nav_quem_somos': 'ABOUT US', 'nav_trabalhe_na_ep': 'CAREERS', 'nav_contato': 'CONTACT',
+                    'nav_ep_capital_mobile': 'EP CAPITAL', 'nav_servicos_mobile': 'SERVICES', 'nav_quem_somos_mobile': 'ABOUT US', 'nav_trabalhe_na_ep_mobile': 'CAREERS', 'nav_contato_mobile': 'CONTACT', 'nav_idioma_mobile': 'Language:',
+                    'hero_title': 'EP Capital is an independent financial advisory firm specializing in Mergers and Acquisitions (M&A), founded in 2009 by professionals with extensive experience in the financial market.',
+                    'hero_button': 'View +',
+                    'values_excellence_title': 'EXCELLENCE', 'values_excellence_text': 'Our clients are confident that all operations receive our best efforts with the involvement of all partners.',
+                    'values_alignment_title': 'ALIGNMENT OF INTERESTS', 'values_alignment_text': 'Our mandate ensures the absence of conflicts of interest with investment funds and other financial institutions.',
+                    'values_confidentiality_title': 'CONFIDENTIALITY', 'values_confidentiality_text': 'Our company\'s policy is the discretion and preservation of our clients\' confidentiality.',
+                    'values_ethics_title': 'ETHICS', 'values_ethics_text': 'We respect and value the established agreements.',
+                    'services_section_title': 'SERVICES', 'services_sell_side_title': 'SELL SIDE', 'services_sell_side_subtitle': '(ATTRACTING INVESTORS)', 'services_sell_side_button': 'VIEW+',
+                    'services_buy_side_title': 'BUY SIDE', 'services_buy_side_subtitle': '(ACQUISITIONS)', 'services_buy_side_button': 'VIEW+', 'services_fusions_title': 'MERGERS AND JOINT VENTURES', 'services_fusions_button': 'VIEW+',
+                    'other_services_title': 'Other<br>Services', 'other_services_valuation_title': 'VALUATION REPORTS', 'other_services_valuation_button': 'VIEW+',
+                    'other_services_debt_title': 'DEBT RAISING', 'other_services_debt_button': 'VIEW+', 'other_services_project_finance_title': 'PROJECT FINANCE', 'other_services_project_finance_button': 'VIEW+',
+                    'other_services_capital_markets_title': 'CAPITAL MARKETS ACCESS', 'other_services_capital_markets_button': 'VIEW+',
+                    'other_services_governance_title': 'CORPORATE GOVERNANCE PROCESS', 'other_services_governance_button': 'VIEW+',
+                    'about_section_title': 'ABOUT US', 'about_council_title': 'Council', 'about_council_button_1': 'VIEW +', 'about_council_button_2': 'VIEW +', 'about_council_button_3': 'VIEW +',
+                    'about_partners_title': 'Partners', 'about_partners_role_1': 'PROJECTS', 'about_partners_role_2': 'BUY SIDE / PROJECTS', 'about_partners_role_3': 'MARKET ANALYSIS', 'about_partners_role_4': 'BUY SIDE / PROJECTS',
+                    'about_analysts_title': 'Analysts', 'about_analysts_role_1': 'MARKET ANALYSIS', 'about_analysts_role_2': 'MARKET ANALYSIS',
+                    'transactions_title': 'MAIN TRANSACTIONS COMPLETED',
+                    'transaction_text_1': 'We advised on the sale of 100% of the shares of', 'transaction_text_2': 'In an transaction for', 'transaction_text_3': 'We advised on the sale of 30% of the shares of', 'transaction_text_4': 'In an operation for',
+                    'transaction_text_5': 'We advised on the sale of 100% of the shares of', 'transaction_text_6': 'In an transaction for', 'transaction_text_7': 'We advised on the sale of 100% of the shares of', 'transaction_text_8': 'In an operation for',
+                    'transaction_text_9': 'We advised on the sale of 100% of the shares of', 'transaction_text_10': 'In an transaction for', 'transaction_text_11': 'We advised on the sale of 100% of the shares of', 'transaction_text_12': 'In an operation for',
+                    'transaction_text_13': 'We advised on the sale of 100% of the shares of', 'transaction_text_14': 'In an transaction for', 'transaction_text_15': 'We advised on the sale of 100% of the shares of', 'transaction_text_16': 'In an operation for',
+                    'transaction_text_17': 'We advised on the sale of 100% of the shares of', 'transaction_text_18': 'In an transaction for', 'transaction_text_19': 'We advised on the sale of 100% of the shares of', 'transaction_text_20': 'In an operation for',
+                    'work_with_us_title': 'WORK WITH US', 'work_with_us_text': 'EP Capital is committed not only to the success of clients and investors, but also to the growth and significant rewards of the team. In a dynamic environment, the company offers opportunities for rapid learning and a long-term career. You are invited to send your resume in the contact tab. If there is an opportunity that matches your profile, we will contact you.',
+                    'contact_title': 'CONTACT', 'contact_address': 'Rua Pedroso Alvarenga, 1284<br>14th floor, suite 142 – Itaim Bibi<br>São Paulo, SP, Brazil',
+                    'modal_default_p1': 'EP Capital is an independent financial advisory firm specializing in Mergers and Acquisitions (M&A), founded in 2009 by professionals with extensive experience in the financial market.',
+                    'modal_default_p2': 'Initially known as Estrateplan, EP Capital evolved and took on a new market positioning, increasing the company\'s ability to provide high-efficiency financial advisory services.',
+                    'modal_default_p3': 'EP Capital advises companies with a middle and corporate market positioning in various sectors, helping its clients achieve their strategic and financial objectives by seeking investors in local and global markets.',
+                    'modal_default_p4': 'With an international network of relationships, high technical rigor, and the team\'s professional experience, EP Capital enables its local clients to conduct "cross-border" business, maximizing the results of the developed solutions.',
+                    'modal_sell_side_title': 'SELL SIDE (ATTRACTING INVESTORS)', 'modal_sell_side_intro': 'Advisory to companies in attracting financial or strategic investors, aiming for the partial or total sale of the company.', 'modal_sell_side_subtitle1': 'Company Preparation', 'modal_sell_side_list1': '<li>Definition of the ideal transaction structure</li><li>Economic-financial diagnosis</li><li>Projections and Valuation</li><li>Preparation of presentation materials</li>', 'modal_sell_side_subtitle2': 'Investor Attraction', 'modal_sell_side_list2': '<li>Market mapping</li><li>Company presentation</li><li>Specific financial and strategic analyses</li>', 'modal_sell_side_subtitle3': 'Negotiation and Closing', 'modal_sell_side_list3': '<li>Choice of the most suitable proposal</li><li>Coordination of the due diligence process</li><li>Support in negotiating and drafting contracts</li>',
+                    'modal_buy_side_title': 'BUY SIDE (ACQUISITIONS)', 'modal_buy_side_intro': 'EP Capital advises investors in identifying the most suitable target companies for their investment strategies.', 'modal_buy_side_subtitle1': 'Target Mapping', 'modal_buy_side_list1': '<li>Alignment of the acquisition strategy</li><li>Sector analysis and mapping</li><li>Selection and approach of companies</li>', 'modal_buy_side_subtitle2': 'Financial Analysis of the Investment', 'modal_buy_side_list2': '<li>Company valuation</li><li>Identification and analysis of synergies</li><li>Presentation material for the board</li>', 'modal_buy_side_subtitle3': 'Negotiation and Closing', 'modal_buy_side_list3': '<li>Definition of the negotiation strategy</li><li>Support in the due diligence process</li><li>Support in negotiating and drafting contracts</li>',
+                    'modal_fusions_title': 'MERGERS AND JOINT VENTURES', 'modal_fusions_intro': 'Any merger or joint venture operation requires a careful measurement of potential gains and risks for the new company, so that, once the partnership is structured, synergies can be maximized.', 'modal_fusions_subtitle1': 'Company Preparation', 'modal_fusions_list1': '<li>Sector analysis</li><li>Partner mapping</li><li>Interlocution and presentation of the parties</li><li>Economic-financial valuation</li>', 'modal_fusions_subtitle2': 'Feasibility Analyses', 'modal_fusions_list2': '<li>Definition of the ideal transaction structure</li><li>Measurement of synergies and risks</li><li>Economic-financial analysis of the new company</li><li>Formatting of the corporate structure</li>', 'modal_fusions_subtitle3': 'Negotiation and Closing', 'modal_fusions_list3': '<li>Definition of the negotiation strategy</li><li>Coordination of the due diligence process</li><li>Support in negotiating and drafting contracts</li>',
+                    'modal_valuation_title': 'VALUATION REPORTS', 'modal_valuation_text1': 'EP Capital prepares reports and opinions that aim to support financial, legal, tax, operational, and other decisions. The team is composed of doctors and professors in finance, with extensive experience in the financial market and credentials to evaluate and issue opinions for public authorities, boards, investors, lawyers, and arbitration chambers.', 'modal_valuation_text2': 'The valuation reports of the company\'s value, debt, and equity, prepared by EP Capital, have the following applications:', 'modal_valuation_list': '<li>Support for litigants in legal disputes</li><li>Accounting for assets in investment funds</li><li>Revaluation of assets for accounting purposes</li>', 'modal_governance_title': 'CORPORATE GOVERNANCE PROCESS', 'modal_governance_text1': 'EP Capital supports companies and business groups in structuring and strengthening corporate governance processes, ensuring greater transparency, efficiency, and strategic alignment among partners, managers, and stakeholders. The work is carried out by professionals with solid experience in corporate finance, restructuring, and internal controls, ensuring the implementation of best governance practices tailored to each business reality.', 'modal_governance_text2': 'The corporate governance solutions developed by EP Capital have the following applications:', 'modal_governance_list': '<li>Corporate restructuring</li><li>Structuring of corporate organizational chart</li><li>Definition of accounting parameters and performance metrics</li>',
+                    'modal_debt_title': 'DEBT RAISING', 'modal_debt_text1': 'EP Capital supports companies in raising debt through operations aimed at improving the company\'s capital structure, minimizing financial costs, and enabling investment projects.', 'modal_debt_text2': 'Main structured debt services offered:', 'modal_debt_list': '<li>BNDES and other development agencies</li><li>Issuance of debentures</li><li>Mezzanine debt</li><li>Structuring of CRI, CRA, and FIDC</li>',
+                    'modal_project_finance_title': 'PROJECT FINANCE', 'modal_project_finance_text1': 'EP Capital advises companies on projects that demand differentiated experience and technical knowledge for making relevant strategic decisions.', 'modal_project_finance_text2': 'Main services offered in Project Finance:', 'modal_project_finance_list': '<li>Project feasibility study</li><li>PPP</li><li>BNDES</li>',
+                    'modal_capital_markets_title': 'CAPITAL MARKETS ACCESS', 'modal_capital_markets_text1': 'We assist companies in preparing for access to the capital markets, in the Access Market, IPO, and DCM modalities.', 'modal_capital_markets_list': '<li>Preparation of documentation to be submitted to CVM and B3</li><li>Support in the selection and coordination of other process participants, such as law firms, auditors, custodians, and rating agencies</li><li>Active participation in roadshows for institutional investors</li>',
+                    'modal_castro_text1': 'Carlos Castro is a member of the Advisory Board of EP Capital and has extensive experience in the banking area, with a focus on commercial and credit. He served as credit and collection director for the Middle and Corporate segments at Itaú/BBA. He was CEO of Interbanco (Unibanco\'s operation in Paraguay) and served as Corporate Director of Banco Nacional S.A and Director of Credit and Risk for External Units – Latam at Itaú Unibanco.', 'modal_castro_text2': 'He is currently a board member and President of the Audit Committee of Banco Itaú Paraguay and President of the Audit Committee of OCA S.A (a company of the Itaú Unibanco Group in Uruguay). He has a degree in Business Administration from FEA-USP, with a postgraduate degree from EAESP – FGV and an MBA from FIA. He has participated in financial operations for all segments of the economy.',
+                    'modal_rodrigues_text1': 'Odilardo Rodrigues has been working in the financial market for 52 years and is a member of the Advisory Board of EP Capital. He was Director of Structured Operations at Banco Bradesco S/A and Vice President of Administration and Finance at Grupo Victor Malzoni. Director of Corporate at Banco BCN. At the beginning of his career, he stood out in the commercial area of Chase Manhattan Bank, later moving to structured operations (Corporate Finance) and capital markets. Graduated in Accounting from Fundação Visconde de Cairú, he participated in several purchase and sale operations of companies, as well as important capital market operations, highlighting the sale of all shareholdings in shopping centers held by Grupo Malzoni to the Brascan group, among hundreds of other structured operations.',
+                    'modal_rossi_text1': 'Luiz Rossi works in the areas of corporate and banking finance. He was executive director of the corporate area at BBVA and corporate director at BCN | Bradesco. He worked at Accenture in the strategy area for companies in the technology, communication, and telecommunications sectors. He has solid knowledge of the operation of various sectors and industries.', 'modal_rossi_text2': 'In the academic field, he was a finance professor in the undergraduate business administration course at FEA – USP and in the MBA courses at FIA and FGV. He has a post-doctorate and doctorate from FEA-USP, a master\'s in finance from FGV, a postgraduate degree in finance from IBMEC and FGV. He graduated in agronomic engineering from ESALQ-USP.', 'modal_rossi_text3': 'Author of the book "Manual of Private Equity and Venture Capital" published by Atlas.'
+                },
+                'es': {
+                    'nav_ep_capital': 'EP CAPITAL', 'nav_servicos': 'SERVICIOS', 'nav_quem_somos': 'QUIÉNES SOMOS', 'nav_trabalhe_na_ep': 'TRABAJA EN EP', 'nav_contato': 'CONTACTO',
+                    'nav_ep_capital_mobile': 'EP CAPITAL', 'nav_servicos_mobile': 'SERVICIOS', 'nav_quem_somos_mobile': 'QUIÉNES SOMOS', 'nav_trabalhe_na_ep_mobile': 'TRABAJA EN EP', 'nav_contato_mobile': 'CONTACTO', 'nav_idioma_mobile': 'Idioma:',
+                    'hero_title': 'EP Capital es una firma independiente de asesoría financiera especializada en Fusiones y Adquisiciones (M&A), fundada en 2009 por profesionales con amplia experiencia en el mercado financiero.',
+                    'hero_button': 'Ver +',
+                    'values_excellence_title': 'EXCELENCIA', 'values_excellence_text': 'Nuestros clientes confían en que todas las operaciones reciben nuestros mejores esfuerzos con la participación de todos los socios.',
+                    'values_alignment_title': 'ALINEACIÓN DE INTERESES', 'values_alignment_text': 'Nuestro mandato garantiza la ausencia de conflictos de intereses con fondos de inversión y otras instituciones financieras.',
+                    'values_confidentiality_title': 'CONFIDENCIALIDAD', 'values_confidentiality_text': 'La política de nuestra empresa es la discreción y la preservación de la confidencialidad de nuestros clientes.',
+                    'values_ethics_title': 'ÉTICA', 'values_ethics_text': 'Respetamos y valoramos los acuerdos establecidos.',
+                    'services_section_title': 'SERVICIOS', 'services_sell_side_title': 'SELL SIDE', 'services_sell_side_subtitle': '(ATRACCIÓN DE INVERSORES)', 'services_sell_side_button': 'VER+',
+                    'services_buy_side_title': 'BUY SIDE', 'services_buy_side_subtitle': '(ADQUISICIONES)', 'services_buy_side_button': 'VER+', 'services_fusions_title': 'FUSIONES Y JOINT VENTURES', 'services_fusions_button': 'VER+',
+                    'other_services_title': 'Otros<br>Servicios', 'other_services_valuation_title': 'INFORMES DE VALORACIÓN', 'other_services_valuation_button': 'VER+',
+                    'other_services_debt_title': 'CAPTACIÓN DE DEUDA', 'other_services_debt_button': 'VER+', 'other_services_project_finance_title': 'PROJECT FINANCE', 'other_services_project_finance_button': 'VER+',
+                    'other_services_capital_markets_title': 'ACCESO A LOS MERCADOS DE CAPITALES', 'other_services_capital_markets_button': 'VER+',
+                    'other_services_governance_title': 'PROCESO DE GOBERNANZA CORPORATIVA', 'other_services_governance_button': 'VER+',
+                    'about_section_title': 'QUIÉNES SOMOS', 'about_council_title': 'Consejo', 'about_council_button_1': 'VER +', 'about_council_button_2': 'VER +', 'about_council_button_3': 'VER +',
+                    'about_partners_title': 'Socios', 'about_partners_role_1': 'PROYECTOS', 'about_partners_role_2': 'BUY SIDE / PROYECTOS', 'about_partners_role_3': 'ANÁLISIS DE MERCADO', 'about_partners_role_4': 'BUY SIDE / PROYECTOS',
+                    'about_analysts_title': 'Analistas', 'about_analysts_role_1': 'ANÁLISIS DE MERCADO', 'about_analysts_role_2': 'ANÁLISIS DE MERCADO',
+                    'transactions_title': 'PRINCIPALES TRANSACCIONES REALIZADAS',
+                    'transaction_text_1': 'Asesoramos en la venta del 100% de las acciones de', 'transaction_text_2': 'En una operación para', 'transaction_text_3': 'Asesoramos en la venta del 30% de las acciones de', 'transaction_text_4': 'En una operación para',
+                    'transaction_text_5': 'Asesoramos en la venta del 100% de las acciones de', 'transaction_text_6': 'En una operación para', 'transaction_text_7': 'Asesoramos en la venta del 100% de las acciones de', 'transaction_text_8': 'En una operación para',
+                    'transaction_text_9': 'Asesoramos en la venta del 100% de las acciones de', 'transaction_text_10': 'En una operación para', 'transaction_text_11': 'Asesoramos en la venta del 100% de las acciones de', 'transaction_text_12': 'En una operación para',
+                    'transaction_text_13': 'Asesoramos en la venta del 100% de las acciones de', 'transaction_text_14': 'En una operación para', 'transaction_text_15': 'Asesoramos en la venta del 100% de las acciones de', 'transaction_text_16': 'En una operación para',
+                    'transaction_text_17': 'Asesoramos en la venta del 100% de las acciones de', 'transaction_text_18': 'En una operación para', 'transaction_text_19': 'Asesoramos en la venta del 100% de las acciones de', 'transaction_text_20': 'En una operación para',
+                    'work_with_us_title': 'TRABAJA CON NOSOTROS', 'work_with_us_text': 'EP Capital está comprometida no solo con el éxito de los clientes e inversores, sino también con el crecimiento y las significativas recompensas del equipo. En un entorno dinámico, la empresa ofrece oportunidades de aprendizaje rápido y una carrera a largo plazo. Le invitamos a enviar su currículum en la pestaña de contacto. Si surge una oportunidad que se ajuste a su perfil, nos pondremos en contacto.',
+                    'contact_title': 'CONTACTO', 'contact_address': 'Rua Pedroso Alvarenga, 1284<br>14º piso, conjunto 142 – Itaim Bibi<br>São Paulo, SP, Brasil',
+                    'modal_default_p1': 'EP Capital es una firma independiente de asesoría financiera especializada en Fusiones y Adquisiciones (M&A), fundada en 2009 por profesionales con amplia experiencia en el mercado financiero.',
+                    'modal_default_p2': 'Inicialmente conocida como Estrateplan, EP Capital evolucionó y adoptó un nuevo posicionamiento en el mercado, aumentando la capacidad de la empresa para prestar servicios de asesoramiento financiero de alta eficiencia.',
+                    'modal_default_p3': 'EP Capital asesora a empresas con un posicionamiento en el mercado medio y corporativo en diversos sectores, ayudando a sus clientes a alcanzar sus objetivos estratégicos y financieros mediante la búsqueda de inversores en los mercados locales y globales.',
+                    'modal_default_p4': 'Con una red de relaciones internacionales, un alto rigor técnico y la experiencia profesional del equipo, EP Capital permite a sus clientes locales realizar negocios "cross-border", maximizando los resultados de las soluciones desarrolladas.',
+                    'modal_sell_side_title': 'SELL SIDE (ATRACCIÓN DE INVERSORES)', 'modal_sell_side_intro': 'Asesoramiento a empresas para atraer inversores financieros o estratégicos, con el objetivo de la venta parcial o total de la empresa.', 'modal_sell_side_subtitle1': 'Preparación de la empresa', 'modal_sell_side_list1': '<li>Definición de la estructura de transacción ideal</li><li>Diagnóstico económico-financiero</li><li>Proyecciones y valoración</li><li>Elaboración de materiales de presentación</li>', 'modal_sell_side_subtitle2': 'Atracción de inversores', 'modal_sell_side_list2': '<li>Mapeo de mercado</li><li>Presentación de la empresa</li><li>Análisis financieros y estratégicos específicos</li>', 'modal_sell_side_subtitle3': 'Negociación y cierre', 'modal_sell_side_list3': '<li>Elección de la propuesta más adecuada</li><li>Coordinación del proceso de due diligence</li><li>Apoyo en la negociación y redacción de contratos</li>',
+                    'modal_buy_side_title': 'BUY SIDE (ADQUISICIONES)', 'modal_buy_side_intro': 'EP Capital asesora a inversores en la identificación de las empresas objetivo más adecuadas para sus estrategias de inversión.', 'modal_buy_side_subtitle1': 'Mapeo de objetivos', 'modal_buy_side_list1': '<li>Alineación de la estrategia de adquisición</li><li>Análisis y mapeo sectorial</li><li>Selección y acercamiento a las empresas</li>', 'modal_buy_side_subtitle2': 'Análisis financiero de la inversión', 'modal_buy_side_list2': '<li>Valoración de empresas</li><li>Identificación y análisis de sinergias</li><li>Material de presentación para el consejo</li>', 'modal_buy_side_subtitle3': 'Negociación y cierre', 'modal_buy_side_list3': '<li>Definición de la estrategia de negociación</li><li>Apoyo en el proceso de due diligence</li><li>Apoyo en la negociación y redacción de contratos</li>',
+                    'modal_fusions_title': 'FUSIONES Y JOINT VENTURES', 'modal_fusions_intro': 'Toda operación de fusión o empresa conjunta requiere una medición cuidadosa de las posibles ganancias y riesgos para la nueva empresa, para que, una vez estructurada la asociación, se puedan maximizar las sinergias.', 'modal_fusions_subtitle1': 'Preparación de la empresa', 'modal_fusions_list1': '<li>Análisis sectorial</li><li>Mapeo de socios</li><li>Interlocución y presentación de las partes</li><li>Valoración económico-financiera</li>', 'modal_fusions_subtitle2': 'Análisis de viabilidad', 'modal_fusions_list2': '<li>Definición de la estructura de transacción ideal</li><li>Medición de sinergias y riesgos</li><li>Análisis económico-financiero de la nueva empresa</li><li>Formato de la estructura societaria</li>', 'modal_fusions_subtitle3': 'Negociación y cierre', 'modal_fusions_list3': '<li>Definición de la estrategia de negociación</li><li>Coordinación del proceso de due diligence</li><li>Apoyo en la negociación y redacción de contratos</li>',
+                    'modal_valuation_title': 'INFORMES DE VALORACIÓN', 'modal_valuation_text1': 'EP Capital prepara informes y dictámenes que tienen como objetivo respaldar decisiones financieras, legales, fiscales, operativas y de otro tipo. El equipo está compuesto por doctores y profesores en finanzas, con amplia experiencia en el mercado financiero y credenciales para evaluar y emitir dictámenes para autoridades públicas, consejos, inversores, abogados y cámaras de arbitraje.', 'modal_valuation_text2': 'Los informes de valoración del valor de la empresa, la deuda y el capital, elaborados por EP Capital, tienen las siguientes aplicaciones:', 'modal_valuation_list': '<li>Apoyo a litigantes en disputas legales</li><li>Contabilización de activos en fondos de inversión</li><li>Revalorización de activos a efectos contables</li>', 'modal_governance_title': 'PROCESO DE GOBERNANZA CORPORATIVA', 'modal_governance_text1': 'EP Capital apoya a empresas y grupos empresariales en la estructuración y el fortalecimiento de los procesos de gobernanza corporativa, garantizando una mayor transparencia, eficiencia y alineación estratégica entre socios, gestores y partes interesadas. El trabajo lo llevan a cabo profesionales con sólida experiencia en finanzas corporativas, reestructuración y controles internos, asegurando la implementación de buenas prácticas de gobernanza adaptadas a la realidad de cada negocio.', 'modal_governance_text2': 'Las soluciones de gobernanza corporativa elaboradas por EP Capital tienen las siguientes aplicaciones:', 'modal_governance_list': '<li>Reordenamiento societario</li><li>Estructuración del organigrama societario</li><li>Definición de parámetros contables y métricas de rendimiento</li>',
+                    'modal_debt_title': 'CAPTACIÓN DE DEUDA', 'modal_debt_text1': 'EP Capital apoya a las empresas en la captación de deuda a través de operaciones destinadas a mejorar la estructura de capital de la empresa, minimizar los costos financieros y viabilizar proyectos de inversión.', 'modal_debt_text2': 'Principales servicios de deuda estructurada ofrecidos:', 'modal_debt_list': '<li>BNDES y otros organismos de fomento</li><li>Emisión de obligaciones</li><li>Deuda mezzanine</li><li>Estructuración de CRI, CRA y FIDC</li>',
+                    'modal_project_finance_title': 'PROJECT FINANCE', 'modal_project_finance_text1': 'EP Capital asesora a empresas en proyectos que demandan experiencia y conocimientos técnicos diferenciados para la toma de decisiones estratégicas relevantes.', 'modal_project_finance_text2': 'Principales servicios ofrecidos en Project Finance:', 'modal_project_finance_list': '<li>Estudio de viabilidad de proyectos</li><li>APP</li><li>BNDES</li>',
+                    'modal_capital_markets_title': 'ACCESO A LOS MERCADOS DE CAPITALES', 'modal_capital_markets_text1': 'Ayudamos a las empresas a prepararse para acceder a los mercados de capitales, en las modalidades de Mercado de Acceso, IPO y DCM.', 'modal_capital_markets_list': '<li>Preparación de la documentación que se presentará a la CVM y B3</li><li>Apoyo en la selección y coordinación de otros participantes del proceso, como bufetes de abogados, auditores, custodios y agencias de calificación</li><li>Participación activa en roadshows para inversores institucionales</li>',
+                    'modal_castro_text1': 'Carlos Castro es miembro del Consejo Asesor de EP Capital y cuenta con una amplia experiencia en el sector bancario, con foco en el área comercial y de crédito. Se desempeñó como director de crédito y cobranza para los segmentos Middle y Corporate en Itaú/BBA. Fue CEO de Interbanco (operación de Unibanco en Paraguay) y se desempeñó como Director Corporativo de Banco Nacional S.A y Director de Crédito y Riesgo de las Unidades Externas – Latam en Itaú Unibanco.', 'modal_castro_text2': 'Actualmente es miembro del consejo y Presidente del Comité de Auditoría de Banco Itaú Paraguay y Presidente del Comité de Auditoría de OCA S.A (una empresa del Grupo Itaú Unibanco en Uruguay). Es licenciado en Administración de Empresas por la FEA-USP, con posgrado de la EAESP – FGV y MBA de la FIA. Ha participado en operaciones financieras para todos los segmentos de la economía.',
+                    'modal_rodrigues_text1': 'Odilardo Rodrigues trabaja en el mercado financiero desde hace 52 años y es miembro del Consejo Asesor de EP Capital. Fue Director de Operaciones Estructuradas en Banco Bradesco S/A y Vicepresidente de Administración y Finanzas en Grupo Victor Malzoni. Director de Corporate en Banco BCN. Al principio de su carrera, se destacó en el área comercial de Chase Manhattan Bank, para luego pasar a operaciones estructuradas (Corporate Finance) y mercados de capitales. Graduado en Contabilidad por la Fundação Visconde de Cairú, participó en varias operaciones de compra y venta de empresas, así como en importantes operaciones de mercado de capitales, destacándose la venta de todas las participaciones en centros comerciales de Grupo Malzoni al grupo Brascan, entre cientos de otras operaciones estructuradas.',
+                    'modal_rossi_text1': 'Luiz Rossi trabaja en las áreas de finanzas corporativas y bancarias. Fue director ejecutivo del área corporativa en BBVA y director corporativo en BCN | Bradesco. Trabajó en Accenture en el área de estrategia para empresas de los sectores de tecnología, comunicación y telecomunicaciones. Posee un sólido conocimiento del funcionamiento de diversos sectores e industrias.', 'modal_rossi_text2': 'En el ámbito académico, fue profesor de finanzas en el curso de grado en administración de empresas de la FEA – USP y en los cursos de MBA de la FIA y la FGV. Tiene un posdoctorado y un doctorado de la FEA-USP, un máster en finanzas de la FGV, un posgrado en finanzas del IBMEC y la FGV. Se graduó en ingeniería agronómica en la ESALQ-USP.', 'modal_rossi_text3': 'Autor del libro "Manual de Private Equity y Venture Capital" publicado por Atlas.'
+                }
+            };
+            
+            let currentLanguage = 'pt'; // Default language
+
+            const switchLanguage = (lang, isModal = false) => {
+                currentLanguage = lang;
+                 // Atualiza o atributo lang do HTML
+                document.documentElement.lang = lang.startsWith('pt') ? 'pt-BR' : lang;
+
+                // Atualiza o estado ativo das bandeiras
+                const allLangButtons = document.querySelectorAll('.lang-btn');
+                allLangButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    if(btn.id.includes(`lang-${lang}-`)) {
+                        btn.classList.add('active');
+                    }
+                });
+
+                const scope = isModal ? document.getElementById('modal-content-area') : document;
+                scope.querySelectorAll('[data-lang-key]').forEach(element => {
+                    const key = element.getAttribute('data-lang-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.innerHTML = translations[lang][key];
+                    }
+                });
+            };
+
+            // Event Listeners for language switch buttons
+            document.getElementById('lang-pt-btn-desktop').addEventListener('click', () => switchLanguage('pt'));
+            document.getElementById('lang-en-btn-desktop').addEventListener('click', () => switchLanguage('en'));
+            document.getElementById('lang-es-btn-desktop').addEventListener('click', () => switchLanguage('es'));
+            document.getElementById('lang-pt-btn-mobile').addEventListener('click', () => switchLanguage('pt'));
+            document.getElementById('lang-en-btn-mobile').addEventListener('click', () => switchLanguage('en'));
+            document.getElementById('lang-es-btn-mobile').addEventListener('click', () => switchLanguage('es'));
+
+            // Inicia com o idioma padrão
+            switchLanguage(currentLanguage);
+        });
+    </script>
+
+</body>
+</html>
+
