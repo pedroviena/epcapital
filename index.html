@@ -479,52 +479,56 @@
                     </p>
                 </div>
 
-                <!-- Coluna Contato --><div class="bg-[#eae9e9] p-8 sm:p-12 rounded-lg border border-gray-200 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-                    <h2 class="text-xl font-bold uppercase tracking-wider mb-8 text-[#2E5196]" data-lang-key="contact_title">CONTATO</h2>
-                    <div class="space-y-6">
-                        <!-- Telefone --><div class="flex items-center">
-                            <div class="w-8 h-8 flex-shrink-0 mr-4 flex items-center justify-center">
-                               <img src="img/icons/phone.png" alt="Telefone" class="w-6 h-6">
-                            </div>
-                            <span class="text-gray-600">+55 (11) 3876-9310</span>
-                        </div>
-                        <!-- Email --><div class="flex items-center">
-                            <div class="w-8 h-8 flex-shrink-0 mr-4 flex items-center justify-center">
-                                <img src="img/icons/email.png" alt="Email" class="w-6 h-6">
-                            </div>
-                            <a href="mailto:administrativo@epcapital.com.br" class="text-gray-600 hover:text-[#2E5196]">administrativo@epcapital.com.br</a>
-                        </div>
-                        <!-- Endereço --><div class="flex items-start">
-                             <div class="w-8 h-8 flex-shrink-0 mr-4 flex items-center justify-center mt-1">
-                                <img src="img/icons/local.png" alt="Endereço" class="w-6 h-6">
-                            </div>
-                            <div class="text-gray-600" data-lang-key="contact_address">
-                                Rua Pedroso Alvarenga, 1284<br>
-                                14º andar, conjunto 142 – Itaim Bibi<br>
-                                São Paulo, SP, Brasil
-                            </div>
-                        </div>
-                                 <!-- LinkedIn --><div class="flex items-center">
-                                     <div class="w-8 h-8 flex-shrink-0 mr-4 flex items-center justify-center">
-                                         <img src="img/icons/linkedin.png" alt="LinkedIn" class="w-6 h-6">
-                                     </div>
-                                    <a href="https://linkedin.com/company/estrateplan" class="text-gray-600 hover:text-[#2E5196]" target="_blank" rel="noopener noreferrer">linkedin.com/company/EPCapital</a>
-                                </div>
-                    </div>
-                </div>
+              <div class="bg-[#eae9e9] p-8 sm:p-12 rounded-lg border border-gray-200 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+    <h2 class="text-xl font-bold uppercase tracking-wider mb-8 text-[#2E5196]" data-lang-key="contact_title">CONTATO</h2>
+    <div class="space-y-6">
+        <div class="flex items-center">
+            <div class="w-8 h-8 flex-shrink-0 mr-4 flex items-center justify-center">
+                <img src="img/icons/phone.png" alt="Telefone" class="w-6 h-6">
+            </div>
+            <span class="text-gray-600">+55 (11) 3876-9310</span>
+        </div>
+        <div class="flex items-center">
+            <div class="w-8 h-8 flex-shrink-0 mr-4 flex items-center justify-center">
+                <img src="img/icons/email.png" alt="Email" class="w-6 h-6">
+            </div>
+            <a href="mailto:administrativo@epcapital.com.br" class="text-gray-600 hover:text-[#2E5196] break-all">administrativo@epcapital.com.br</a>
+        </div>
+        <div class="flex items-start">
+             <div class="w-8 h-8 flex-shrink-0 mr-4 flex items-center justify-center mt-1">
+                <img src="img/icons/local.png" alt="Endereço" class="w-6 h-6">
+            </div>
+            <div class="text-gray-600" data-lang-key="contact_address">
+                Rua Pedroso Alvarenga, 1284<br>
+                14º andar, conjunto 142 – Itaim Bibi<br>
+                São Paulo, SP, Brasil
+            </div>
+        </div>
+        <div class="flex items-center">
+            <div class="w-8 h-8 flex-shrink-0 mr-4 flex items-center justify-center">
+                <img src="img/icons/linkedin.png" alt="LinkedIn" class="w-6 h-6">
+            </div>
+             <a href="https://linkedin.com/company/estrateplan" class="text-gray-600 hover:text-[#2E5196] break-all" target="_blank" rel="noopener noreferrer">linkedin.com/company/EPCapital</a>
+        </div>
+    </div>
+</div>
             </div>
         </section>
 
     </main>
 
     <!-- =========== POPUP MODAL =========== --><div id="info-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl p-8 sm:p-12 relative">
-            <!-- Close Button --><button id="close-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800">
+        <!-- Inner modal: limitar altura total e usar layout em coluna para permitir scroll interno -->
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-3xl p-8 sm:p-12 relative" style="max-height:90vh; overflow:hidden; display:flex; flex-direction:column;">
+            <!-- Close Button (permanece visível pois o scroll será dentro da área de conteúdo) -->
+            <button id="close-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800" aria-label="Fechar">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-    
-            <!-- Dynamic Modal Content Area --><div id="modal-content-area" class="space-y-6 text-gray-700">
-                <!-- Conteúdo padrão ou específico será inserido aqui --></div>
+
+            <!-- Dynamic Modal Content Area: torna-se rolável internamente quando excede a altura -->
+            <div id="modal-content-area" class="space-y-6 text-gray-700" style="overflow-y:auto; max-height:calc(90vh - 64px); padding-right:8px;">
+                <!-- Conteúdo padrão ou específico será inserido aqui -->
+            </div>
         </div>
     </div>
 
